@@ -1,0 +1,71 @@
+.customer-container {
+    width: 80%;
+    
+    margin: auto;
+
+    padding: 20px;
+  }
+  
+  .customer-form {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .customer-form input {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-btn {
+    background-color: #1054D1;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 125px;
+  }
+  
+  .add-btn:hover {
+    background-color: darkgreen;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #1054D1;
+    color: white;
+  }
+  
+  .edit-btn {
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-btn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  

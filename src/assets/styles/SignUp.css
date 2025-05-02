@@ -1,0 +1,141 @@
+/* SignUp.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  .signup-container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .signup-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 400px;
+  }
+  
+  .signup-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .subtext {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .signup-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .remember-me input {
+    margin-right: 5px;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+  }
+  
+  .signup-btn:hover {
+    background: #0056b3;
+  }
+  
+  .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .separator::before,
+  .separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    margin: 0 10px;
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .social-btn {
+    border: 1px solid #ccc;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .social-btn:hover {
+    background: #f1f1f1;
+  }
+  
+  .google {
+    color: #db4437;
+  }
+  
+  .linkedin {
+    color: #0077b5;
+  }
+  
+  .sso {
+    color: #6c757d;
+  }
+  
+  .login-link {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
