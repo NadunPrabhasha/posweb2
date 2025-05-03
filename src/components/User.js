@@ -16,6 +16,7 @@ function User() {
     <div className="dashboard">
       <Slideshow />
 
+      {/* Chatbot Icon in bottom-right corner */}
       <img
         src={chatbotIcon}
         alt="Chatbot Icon"
@@ -26,12 +27,24 @@ function User() {
           width: '50px',
           height: '50px',
           cursor: 'pointer',
-          zIndex: 999,
+          zIndex: 1000,
         }}
         onClick={toggleChat}
       />
 
-      {showChat && <ChatBot />}
+      {/* Chatbot Interface appears above the icon, from the right */}
+      {showChat && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '80px',     // Appears just above the icon
+            right: '20px',
+            zIndex: 1000,
+          }}
+        >
+          <ChatBot />
+        </div>
+      )}
     </div>
   );
 }
