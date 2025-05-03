@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 import "../assets/styles/Items.css";
 
 const Items = () => {
@@ -80,11 +82,31 @@ const Items = () => {
     setErrors({});
   };
 
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.text("Items Report", 14, 15);
+    const tableColumn = ["Item ID", "Item Name", "Category", "Cost Price", "Sell Price"];
+    const tableRows = items.map(item => [
+      item.itemId,
+      item.itemName,
+      item.category,
+      item.costPrice,
+      item.sellPrice
+    ]);
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20
+    });
+
+    doc.save("items_report.pdf");
+  };
+
   return (
       <div className="items-page">
         <h2>Manage Items</h2>
 
-        {/* Item Form Container */}
         <div className="form-container">
           <h3>Add New Item</h3>
           <label>
@@ -143,17 +165,19 @@ const Items = () => {
           <button className="add-btn" onClick={handleAddItem}>Add Item</button>
         </div>
 
-        {/* Items Table Container */}
         <div className="table-container">
           <h3>Item List</h3>
+          <button className="report-btn" onClick={generatePDF}>
+            Download PDF Report
+          </button>
           <table>
             <thead>
             <tr>
               <th>Item Id</th>
               <th>Item Name</th>
               <th>Category</th>
-              <th>Cost Price</th>
-              <th>Sell Price</th>
+              <th>Cost Price(Rs.)</th>
+              <th>Sell Price(Rs.)</th>
               <th>Actions</th>
             </tr>
             </thead>

@@ -80,22 +80,41 @@ form button:hover {
 .filter-section {
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 80%;
   margin: auto;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .filter-section input,
 .filter-section select {
   padding: 10px;
-  width: 48%;
+  width: 30%;
   font-size: 16px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   background-color: transparent;
 }
 
-/* Table Styling (matching Items table) */
+/* PDF Report Button Style */
+.filter-section button {
+  width: 30%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #1054d1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-section button:hover {
+  background-color: #083aa9;
+}
+
+/* Table Styling */
 .supply-table {
   background: white;
   padding: 20px;
@@ -137,7 +156,7 @@ form button:hover {
   background-color: #ddd;
 }
 
-/* Button Styles (edit/delete same as Items page) */
+/* Button Styles */
 .supply-table button {
   padding: 6px 12px;
   margin: 0 2px;
