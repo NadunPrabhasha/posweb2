@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import "../assets/styles/Customers.css"; // Ensure this is the correct path for your styles
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../assets/styles/Customers.css"; // Adjust the path if needed
 
 const Customer = () => {
   const [customers, setCustomers] = useState([
@@ -14,19 +18,71 @@ const Customer = () => {
   };
 
   const addCustomer = () => {
-    if (newCustomer.name && newCustomer.email && newCustomer.address && newCustomer.contactNo) {
-      setCustomers([...customers, { id: customers.length + 1, ...newCustomer }]);
-      setNewCustomer({ name: "", email: "", address: "", contactNo: "" });
+    const { name, email, address, contactNo } = newCustomer;
+
+    if (!name.trim()) {
+      toast.error("Customer name is required");
+      return;
     }
+    if (!email.trim()) {
+      toast.error("Email is required");
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Invalid email format");
+      return;
+    }
+    if (!address.trim()) {
+      toast.error("Address is required");
+      return;
+    }
+    if (!contactNo.trim()) {
+      toast.error("Contact number is required");
+      return;
+    } else if (!/^\d{10}$/.test(contactNo)) {
+      toast.error("Contact number must be exactly 10 digits");
+      return;
+    }
+
+    setCustomers([...customers, { id: customers.length + 1, ...newCustomer }]);
+    setNewCustomer({ name: "", email: "", address: "", contactNo: "" });
+    toast.success("Customer added successfully!");
   };
 
   const deleteCustomer = (id) => {
     setCustomers(customers.filter((customer) => customer.id !== id));
+    toast.info("Customer deleted");
+  };
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(18);
+    doc.text("Customer Report", 14, 22);
+
+    const tableColumn = ["ID", "Name", "Email", "Address", "Contact No"];
+    const tableRows = customers.map((customer) => [
+      customer.id,
+      customer.name,
+      customer.email,
+      customer.address,
+      customer.contactNo
+    ]);
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 30
+    });
+
+    doc.save("customer_report.pdf");
+    toast.success("PDF report generated");
   };
 
   return (
       <div className="customer-container">
         <h2>Customer Management</h2>
+
+        {/* Report Button */}
+        <button className="report-btn" onClick={generatePDF}>Generate PDF Report</button>
 
         {/* Customer Form */}
         <div className="form-container">
@@ -62,7 +118,6 @@ const Customer = () => {
               <th>Actions</th>
             </tr>
             </thead>
-
             <tbody>
             {customers.map((customer) => (
                 <tr key={customer.id}>
@@ -80,8 +135,10 @@ const Customer = () => {
             </tbody>
           </table>
         </div>
-      </div>
 
+        {/* Toast Container */}
+        <ToastContainer position="top-right" autoClose={3000} />
+      </div>
   );
 };
 
